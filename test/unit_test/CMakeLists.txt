@@ -15,4 +15,5 @@ target_link_libraries (
 )
 
 add_subdirectory(network)
+add_subdirectory(base)
 
