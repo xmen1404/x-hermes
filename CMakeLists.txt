@@ -8,6 +8,7 @@ list(APPEND CMAKE_PREFIX_PATH "${CMAKE_CURRENT_SOURCE_DIR}/build/build/Release/g
 # core implementation
 add_subdirectory(core/network)
 add_subdirectory(core/config)
+add_subdirectory(core/base)
 
 # tests
 include(CTest)
