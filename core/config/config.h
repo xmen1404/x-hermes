@@ -6,14 +6,16 @@
 namespace xhermes::config {
 
 class Config {
-public: 
-  template <typename T>
-  T Get(const std::string key) {
-    return data_[key];
+public:
+  bool Init() {
   }
 
-private:
-  std::unordered_map<std::string, std::string> data_;
+  template <typename T>
+  T Get(const std::string& key) {
+  }
+
+  bool Has(const std::string& key) {
+  }
 };
 
 } // namespace xhermes::config
