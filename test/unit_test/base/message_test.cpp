@@ -19,10 +19,9 @@ TEST_CASE("Message Serialize-Deserialized Test") {
         0
     );
     char *buffer = new char[1024];
-    size_t offset = 0;
     
-    msg.serialize(buffer, offset);      offset = 0;
-    msg.deserialize(buffer, offset);    offset = 0;
+    msg.Serialize(buffer);
+    msg.Deserialize(buffer);
 
     REQUIRE(msg.header.type == CLIENT_SEND_TEXT);
     REQUIRE(msg.header.src == 12345678);

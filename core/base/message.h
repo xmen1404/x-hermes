@@ -24,7 +24,7 @@ struct MessageHeader {
     size_t length;
     time_t timestamp;
 
-    void init(MessageType t, uint64_t src, uint64_t dst, size_t length, time_t timestamp) {
+    void Init(MessageType t, uint64_t src, uint64_t dst, size_t length, time_t timestamp) {
         this->type = t;
         this->src = src;
         this->dst = dst;
@@ -40,7 +40,7 @@ struct MessageBody {
     ~MessageBody() {
         delete[] buff;
     }
-    void init(std::span<char> payload) {
+    void Init(std::span<char> payload) {
         buff = new char[payload.size() + 3];
         std::memcpy(buff, payload.data(), payload.size());
     }
@@ -52,28 +52,27 @@ struct Message {
 
     Message() {}
     Message(MessageType t, uint64_t src, uint64_t dst, std::span<char> payload, time_t timestamp) {
-        header.init(t, src, dst, payload.size(), timestamp);
-        body.init(payload);
+        header.Init(t, src, dst, payload.size(), timestamp);
+        body.Init(payload);
     }
 
-    void serialize(char *buffer, size_t& offset) {
-        std::memcpy(buffer+offset, &header, sizeof(MessageHeader));
-        offset += sizeof(MessageHeader);
-
-        if (body.buff) {
-            std::memcpy(buffer+offset, body.buff, header.length);
-            offset += header.length;
-        }
+    size_t Serialize(char *buffer) {
+        std::memcpy(buffer, &header, sizeof(MessageHeader));
+        
+        if (body.buff)
+            std::memcpy(buffer+sizeof(MessageHeader), body.buff, header.length);
+        
+        return sizeof(MessageHeader)+header.length;
     }
-    void deserialize(const char *buffer, size_t& offset) {
-        std::memcpy(&header, buffer+offset, sizeof(MessageHeader));
-        offset += sizeof(MessageHeader);
+    size_t Deserialize(const char *buffer) {
+        std::memcpy(&header, buffer, sizeof(MessageHeader));
 
         if (!body.buff)
             body.buff = new char[header.length+3];
         
-        std::memcpy(body.buff, buffer+offset, header.length);
-        offset += header.length;
+        std::memcpy(body.buff, buffer+sizeof(MessageHeader), header.length);
+
+        return sizeof(MessageHeader)+header.length;
     }
 };
 
