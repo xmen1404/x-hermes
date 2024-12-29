@@ -9,19 +9,6 @@ namespace xhermes::network {
 
 using Config = xhermes::config::Config;
 
-struct MessageHeader {
-  // TODO: implement me
-};
-
-struct MessgeBody {
-  // TODO: implement me
-};
-
-struct Message {
-  MessageHeader header;
-  MessageBody body;
-};
-
 class Receiver {
 public:
   Receiver() {}
