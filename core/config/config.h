@@ -33,7 +33,7 @@ namespace YAML {
         static Node encode(const xhermes::config::Config& rhs) {
             return rhs.node_;
         }
-
+        
         static bool decode(const Node& node, xhermes::config::Config& rhs) {
             rhs.node_ = node;
             return true;
