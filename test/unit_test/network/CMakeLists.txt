@@ -1,14 +1,14 @@
 # network unit tests
 add_executable (
-  network_test
-  main.cpp
-  socket_test.cpp
+  network_base_test
+  message_test.cpp
 )
 
 # dependencies
 target_link_libraries(
-  network_test PUBLIC unit_test
+  network_base_test PUBLIC unit_test
 )
-add_test(NAME network_test COMMAND network_test)
+add_test(NAME network_base_test COMMAND network_base_test)
+
 
 

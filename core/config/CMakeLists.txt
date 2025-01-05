@@ -16,3 +16,5 @@ target_link_libraries (
   glog::glog
 )
 # target_link_libraries(config INTERFACE yaml-cpp)
+target_include_directories(config INTERFACE ${CMAKE_SOURCE_DIR})
+target_link_libraries(config INTERFACE base)

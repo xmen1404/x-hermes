@@ -5,7 +5,7 @@
 #include <ctime>
 #include <span>
 
-namespace xhermes::message {
+namespace xhermes::network {
 
 typedef enum MessageType {
     CLIENT_LOGIN,
@@ -76,4 +76,4 @@ struct Message {
     }
 };
 
-} // namespace xhermes
+} // namespace xhermes::network

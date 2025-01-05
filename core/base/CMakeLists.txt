@@ -2,7 +2,6 @@ add_library(base INTERFACE)
 
 target_sources (
   base PUBLIC
-  message.h
 )
 
 target_include_directories(
