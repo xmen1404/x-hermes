@@ -17,4 +17,3 @@ target_link_libraries (
 )
 # target_link_libraries(config INTERFACE yaml-cpp)
 target_include_directories(config INTERFACE ${CMAKE_SOURCE_DIR})
-target_link_libraries(config INTERFACE base)
