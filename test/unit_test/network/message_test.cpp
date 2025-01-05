@@ -3,9 +3,10 @@
 #include <cstdlib>
 #include <iostream>
 #include <span>
-#include "message.h"
 
-using namespace xhermes::message;
+#include "core/network/message.h"
+
+using namespace xhermes::network;
 
 TEST_CASE("Message Serialize-Deserialized Test") {
     std::string test = "Hello, world!";

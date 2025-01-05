@@ -3,6 +3,7 @@ add_library(network INTERFACE)
 target_sources (
   network PUBLIC
   base.h
+  message.h
 )
 
 target_include_directories (
