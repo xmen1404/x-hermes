@@ -6,5 +6,5 @@ target_sources(
 )
 
 # dependencies
-target_include_directories(config INTERFACE ${CMAKE_SOURCE_DIR}/core)
+target_include_directories(config INTERFACE ${CMAKE_SOURCE_DIR})
 target_link_libraries(config INTERFACE base)
