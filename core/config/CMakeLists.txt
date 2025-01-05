@@ -7,4 +7,12 @@ target_sources(
 
 # dependencies
 target_include_directories(config INTERFACE ${CMAKE_SOURCE_DIR}/core)
-target_link_libraries(config INTERFACE base)
+
+find_package(yaml-cpp REQUIRED)
+target_link_libraries (
+  config INTERFACE
+  base
+  yaml-cpp::yaml-cpp
+  glog::glog
+)
+# target_link_libraries(config INTERFACE yaml-cpp)
