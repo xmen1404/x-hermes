@@ -11,22 +11,22 @@ namespace xhermes::network {
 using Config = xhermes::config::Config;
 using Message = xhermes::network::Message
 
-class Receiver {
+    class Receiver {
 public:
   Receiver() {}
 
 public:
-  virtual void Init(const Config& config) {} 
-  virtual bool Recv(Messsage& msg) {}
+  virtual void Init(const Config &config) {}
+  virtual bool Recv(Messsage &msg) {}
 };
 
-class Sender {  
+class Sender {
 public:
   Sender() {}
 
 public:
-  virtual void Init(const Config& config) {}
-  virtual bool Send(const Message& msg) {}
+  virtual void Init(const Config &config) {}
+  virtual bool Send(const Message &msg) {}
 };
 
 /**
@@ -34,17 +34,15 @@ public:
  */
 class Server : public Receiver, public Sender {
 public:
-  bool Init(const config::Config& config) {
+  bool Init(const config::Config &config) {
     CHECK(config.Has("addr"));
     const auto addr = config.Get<std::string>("addr");
-    
+
     CHECK(config.Has("port"));
-    const auto port = config.Get<std::string>("port"); 
+    const auto port = config.Get<std::string>("port");
 
     LOG(INFO) << "Initializing stateless server";
-  } 
+  }
 }
 
 } // namespace xhermes::network
-
-
